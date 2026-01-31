@@ -3,7 +3,7 @@ import React, {useState} from "react";
 function ToDoList() {
     // tasks will be an array of strings with a setter function
     // initial state of tasks will be an empty array
-    const [tasks, setTasks] = useState([]);
+    const [tasks, setTasks] = useState(["Eat Breakfast", "Take a Shower", "Walk the Dog"]);
     // new tasks will be an array of strings with a setter function
     // initial state of new tasks will be an empty string
     // this will handle each individual new task added
@@ -12,7 +12,7 @@ function ToDoList() {
     // this function will handle any changes made in the input textbox
     // parameter is event so we can target the value in the textbox
     function handleInputChange(event) {
-
+        setNewTasks(event.target.value);
     }
 
     // this function will handle any tasks being added into the to do list
@@ -39,7 +39,28 @@ function ToDoList() {
     }
     
     return(
-        <p>hello</p>
+        <div className="to-do-list">
+            <h1>To-Do-List</h1>
+            <div>
+                <input 
+                    type="text" 
+                    placeholder="Enter a Task..." 
+                    value={newTask}
+                    onChange={handleInputChange}
+                />
+                <button className="add-button" onClick={addTask}>Add</button>
+            </div>
+            <ol>
+                {tasks.map((tasks, index) => 
+                    <li key={index}>
+                        <span className="text">{tasks}</span>
+                        <button className="delete-button" onClick={() => deleteTask(index)}>❌</button>
+                        <button className="move-up-button" onClick={() => moveTaskUp(index)}>👆🏽</button>
+                        <button className="move-down-button" onClick={() => moveTaskDown(index)}>👇🏽</button>
+                    </li>
+                )}
+            </ol>
+        </div>
     );
 }
 
