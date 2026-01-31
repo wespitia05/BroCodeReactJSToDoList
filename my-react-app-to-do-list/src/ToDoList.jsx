@@ -55,7 +55,16 @@ function ToDoList() {
     // this function will handle moving a task down on the list
     // parameter will be an index of the list item we would like to move down
     function moveTaskDown(index) {
-
+        // check if index is already at the bottom of the list, no need to move it down further
+        if(index < tasks.length - 1) {
+            // create array of updated tasks = to spread of current tasks
+            const updatedTasks = [...tasks];
+            // swaps the task you wanna move down with the one thats already below it
+            [updatedTasks[index], updatedTasks[index + 1]] = 
+            [updatedTasks[index + 1], updatedTasks[index]];
+            // set tasks to updated array
+            setTasks(updatedTasks);
+        }
     }
     
     return(
