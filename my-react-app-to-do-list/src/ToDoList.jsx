@@ -17,7 +17,13 @@ function ToDoList() {
 
     // this function will handle any tasks being added into the to do list
     function addTask() {
-
+        // checks to see if input is empty, if not continue normally with adding task
+        if(newTask.trim() !== "") {
+            // use updater function to keep previous tasks and add new task on top
+            setTasks(prevTasks => [...prevTasks, newTask]);
+            // clear input element
+            setNewTasks("");
+        }
     }
 
     // this function will handle deleting any tasks
