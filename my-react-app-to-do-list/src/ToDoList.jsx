@@ -29,7 +29,12 @@ function ToDoList() {
     // this function will handle deleting any tasks
     // parameter will be an index of the list item we would like to delete
     function deleteTask(index) {
-
+        // use filter method to remove the task
+        // if current index of i is strictly not equal to index we want to delete, put in new array of updated tasks
+        // if they match, filter it out bc we dont want it
+        const updatedTasks = tasks.filter((_, i) => i !== index);
+        // set new tasks equal to updated tasks thats missing one element that we filter out
+        setTasks(updatedTasks);
     }
 
     // this function will handle moving a task up on the list
